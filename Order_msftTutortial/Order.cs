@@ -5,7 +5,7 @@ namespace Order_msftTutortial
 {
     internal class Order
     {
-        public string OrderNumber { get; set; }
+        public string OrderNumber { get; private set; }
 
 
         public List<string> Items { get; set; }
@@ -15,8 +15,8 @@ namespace Order_msftTutortial
 
             get;
             set;
-            
-           
+
+
         }
 
         public Order(string orderNumber)
@@ -25,7 +25,12 @@ namespace Order_msftTutortial
         }
 
 
-        
+        public bool IsInvalidOrder()
+        {
+            return Date > DateTime.Now;
+        }
+
+
 
     }
 }

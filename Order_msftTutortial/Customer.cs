@@ -8,7 +8,7 @@ namespace Order_msftTutortial
 {
     class Customer
     {
-        public string Name { get; set; }
+        public string Name { get; private set; }
 
         private List<Order> _orders = new List<Order>();
         public IEnumerable<Order> Orders
@@ -26,6 +26,9 @@ namespace Order_msftTutortial
         public void AddOrder(Order order)
         {
             if (order == null) return;
+            if (order.IsInvalidOrder()) return;
+
+            //if (IsInvalidOrder(order)) return;
 
             var existingOrder = IsExistingOrder(order);
 
@@ -34,6 +37,7 @@ namespace Order_msftTutortial
                 existingOrder.Items = order.Items;
             }
             else
+
                 _orders.Add(order);
         }
 
@@ -41,6 +45,12 @@ namespace Order_msftTutortial
         private Order IsExistingOrder(Order order)
         {
             return _orders.FirstOrDefault(h => h.OrderNumber == order.OrderNumber);
+        }
+
+
+        private bool IsInvalidOrder(Order order)
+        {
+            return order.Date > DateTime.Now;
         }
 
 
