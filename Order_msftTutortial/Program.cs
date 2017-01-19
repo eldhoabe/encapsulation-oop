@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Order_msftTutortial
 {
@@ -36,9 +32,21 @@ namespace Order_msftTutortial
             customer.AddOrder(futureOrder);
 
 
-            foreach (Order customerOrder in customer.Orders)
+            customer.AddOrderRefactored(order);
+            customer.AddOrderRefactored(null);
+            customer.AddOrderRefactored(existingOrder);
+            customer.AddOrderRefactored(futureOrder);
+
+            var s = new Order("s");
+
+            foreach (var item in s)
             {
-                Console.WriteLine(customerOrder.OrderNumber);
+                
+            }
+
+            foreach (var customerOrder in customer.OrderCollection)
+            {
+                Console.WriteLine(customerOrder);
             }
 
             Console.ReadLine();

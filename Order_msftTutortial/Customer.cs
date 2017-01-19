@@ -16,19 +16,26 @@ namespace Order_msftTutortial
             get { return _orders; }
         }
 
+        public  OrderCollection OrderCollection { get; set; }
+        
+
 
         public Customer(string name)
         {
             Name = name;
+            OrderCollection = new OrderCollection();
         }
 
 
+        /// <summary>
+        /// Before refactoring add order method
+        /// </summary>
+        /// <param name="order"></param>
         public void AddOrder(Order order)
         {
             if (order == null) return;
-            if (order.IsInvalidOrder()) return;
+            if (order.IsValid()) return;
 
-            //if (IsInvalidOrder(order)) return;
 
             var existingOrder = IsExistingOrder(order);
 
@@ -42,6 +49,17 @@ namespace Order_msftTutortial
         }
 
 
+        /// <summary>
+        /// Add order method after refactoring
+        /// </summary>
+        /// <param name="order">The order</param>
+        public void AddOrderRefactored(Order order)
+        {
+            OrderCollection.Add(order);
+        }
+
+
+        #region Private methods 
         private Order IsExistingOrder(Order order)
         {
             return _orders.FirstOrDefault(h => h.OrderNumber == order.OrderNumber);
@@ -53,6 +71,7 @@ namespace Order_msftTutortial
             return order.Date > DateTime.Now;
         }
 
+        #endregion
 
     }
 }
