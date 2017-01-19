@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace Order_msftTutortial
 {
-    class OrderCollection : IEnumerable<Order> 
+    class Orders : IEnumerable<Order> 
     {
         private ISet<Order> _orders = new HashSet<Order>();
 

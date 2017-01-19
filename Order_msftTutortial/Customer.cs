@@ -16,14 +16,14 @@ namespace Order_msftTutortial
             get { return _orders; }
         }
 
-        public  OrderCollection OrderCollection { get; set; }
+        public  Orders OrderCollection { get; set; }
         
 
 
         public Customer(string name)
         {
             Name = name;
-            OrderCollection = new OrderCollection();
+            OrderCollection = new Orders();
         }
 
 
@@ -59,7 +59,7 @@ namespace Order_msftTutortial
         }
 
 
-        #region Private methods 
+        #region Private methods before refactoring
         private Order IsExistingOrder(Order order)
         {
             return _orders.FirstOrDefault(h => h.OrderNumber == order.OrderNumber);

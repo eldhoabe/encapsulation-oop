@@ -37,13 +37,7 @@ namespace Order_msftTutortial
             customer.AddOrderRefactored(existingOrder);
             customer.AddOrderRefactored(futureOrder);
 
-            var s = new Order("s");
-
-            foreach (var item in s)
-            {
-                
-            }
-
+           
             foreach (var customerOrder in customer.OrderCollection)
             {
                 Console.WriteLine(customerOrder);
